@@ -1,11 +1,13 @@
+version: '3.8'
+
 services:
   jupyter:
-    image: jupyter/base-notebook:latest
+    build: .
     ports:
       - "8888:8888"
     volumes:
       - jupyter_data:/home/jovyan/work
-    command: start-notebook.sh --NotebookApp.token='' --NotebookApp.password=''  # disables auth
+    command: start-notebook.sh --NotebookApp.token='' --NotebookApp.password=''
     restart: unless-stopped
 
   nginx:
